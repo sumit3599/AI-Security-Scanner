@@ -35,13 +35,19 @@ def check_port(port, scan_target):
     }
     return port_info.get(port, f"Scanning {scan_target} - Port {port}: Noted")
 
-    
 def is_dangerous(port):
     if port in [21, 23, 3389]:
         return True
     else:
         return False
+    
+scan_report = []
 
 for port in dangerous_ports:
         result = check_port(port, scan_target)
         print(result)
+        if is_dangerous(port):
+             scan_report.append(port)
+print(f"Total ports scanned: {len(dangerous_ports)}")
+print(f"Dangerous ports found: {len(scan_report)}")
+print(f"Dangerous ports: {scan_report}")
