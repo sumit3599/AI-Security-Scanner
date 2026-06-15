@@ -26,14 +26,15 @@ print("\n--- Scanning Common Ports ---")
 dangerous_ports = [21, 22, 23, 80, 443, 3389, 8080]
 
 def check_port(port, scan_target):
-    if port == 23:
-        return f"Scanning {scan_target} - Port {port}: DANGER - Telnet!"
-    elif port == 3389:
-        return f"Scanning {scan_target} - Port {port}: WARNING - RDP!"
-    elif port == 21:
-        return f"Scanning {scan_target} - Port {port}: WARNING - FTP unencrypted!"
-    else:
-        return f"Scanning {scan_target} - Port {port}: Noted"
+    port_info = {
+        21: f"Scanning {scan_target} - Port {port}: WARNING - FTP unencrypted!",
+        22:f"Scanning {scan_target} - Port {port}: SSH",
+        23: f"Scanning {scan_target} - Port {port}: DANGER - Telnet!",
+        80: f"Scanning {scan_target} - Port {port}: HTTP - should use HTTPS",
+        3389: f"Scanning {scan_target} - Port {port}: WARNING - RDP!",
+    }
+    return port_info.get(port, f"Scanning {scan_target} - Port {port}: Noted")
+
     
 def is_dangerous(port):
     if port in [21, 23, 3389]:
@@ -42,6 +43,5 @@ def is_dangerous(port):
         return False
 
 for port in dangerous_ports:
-    if is_dangerous(port):
         result = check_port(port, scan_target)
         print(result)
