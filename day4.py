@@ -63,3 +63,7 @@ for port in dangerous_ports:
 print(f"Total ports scanned: {len(dangerous_ports)}")
 print(f"Dangerous ports found: {len(scan_report)}")
 print(f"Dangerous ports: {scan_report}")
+
+file = open("scan_history.txt", "a")
+file.write(f"Scanned {scan_target} - Dangerous ports: {scan_report}\n")
+file.close()
