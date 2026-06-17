@@ -24,3 +24,4 @@ GitHub: https://github.com/sumit3599/AI-Security-Scanner
 
 ## Next: Day 4 - socket module (real scanning)
 | June 16, 2026 | Day 4 | Socket, real scanning, timeout | ~2 hrs | is_port_open, connect_ex, settimeout |
+| June 16, 2026 | Day 5 | File handling - read/write/append | ~1 hr | open(), write mode vs append mode, scan_history.txt logging |
