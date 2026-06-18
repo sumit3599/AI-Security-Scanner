@@ -26,3 +26,4 @@ GitHub: https://github.com/sumit3599/AI-Security-Scanner
 | June 16, 2026 | Day 4 | Socket, real scanning, timeout | ~2 hrs | is_port_open, connect_ex, settimeout |
 | June 16, 2026 | Day 5 | File handling - read/write/append | ~1 hr | open(), write mode vs append mode, scan_history.txt logging |
 | June 17, 2026 | Day 6 | .gitignore - excluding test/log files | ~30 min | git tracking rules, protecting personal scan data |
+| June 17, 2026 | Day 7 | range(), scaling scans, performance limits | ~1 hr | range() excludes last number, why scanning many ports is slow, intro to need for multi-threading |
