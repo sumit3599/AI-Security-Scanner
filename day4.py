@@ -25,7 +25,7 @@ print("Scanner initialized successfully!")
 # Loop - scan multiple ports
 print("\n--- Scanning Common Ports ---")
 
-dangerous_ports = [21, 22, 23, 80, 443, 3389, 8080]
+dangerous_ports = range(1, 101)
 
 def check_port(port, scan_target):
     port_info = {
