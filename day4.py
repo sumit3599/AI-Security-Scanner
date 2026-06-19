@@ -2,6 +2,7 @@
 # Day 1 - My First Python Code
 
 import socket
+import threading
 
 # Variables
 name = "Sumit"
@@ -54,13 +55,24 @@ def is_port_open(ip, port):
 
 scan_report = []
 
-for port in dangerous_ports:
+def scan_port(port):
     if is_port_open(scan_target, port):
         result = check_port(port, scan_target)
         print(result)
         if is_dangerous(port):
             scan_report.append(port)
-print(f"Total ports scanned: {len(dangerous_ports)}")
+
+threads = []
+
+for port in range(1, 101):
+    t = threading.Thread(target=scan_port, args=(port,))
+    threads.append(t)
+    t.start()
+
+for t in threads:
+    t.join()
+
+print(f"Total ports scanned: 100")
 print(f"Dangerous ports found: {len(scan_report)}")
 print(f"Dangerous ports: {scan_report}")
 
