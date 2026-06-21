@@ -29,3 +29,4 @@ GitHub: https://github.com/sumit3599/AI-Security-Scanner
 | June 17, 2026 | Day 7 | range(), scaling scans, performance limits | ~1 hr | range() excludes last number, why scanning many ports is slow, intro to need for multi-threading |
 | June 17, 2026 | Day 8 | Multi-threading | ~1 hr | threading.Thread, t.start(), t.join(), parallel vs sequential scanning |
 | June 17, 2026 | Day 9 | CLI with argparse | ~1 hr | argparse, --target, --ports, string splitting, professional tool interface |
+| June 17, 2026 | Day 10 | Banner grabbing | ~1 hr | sock.recv(), decode(), try/except, service version detection |
