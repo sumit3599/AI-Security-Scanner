@@ -64,10 +64,21 @@ def is_port_open(ip, port):
 
 scan_report = []
 
+def grab_banner(ip, port):
+    try:
+        sock = socket.socket()
+        sock.settimeout(2)
+        sock.connect((ip, port))
+        banner = sock.recv(1024)
+        return banner.decode()
+    except:
+        return "No banner"
+
 def scan_port(port):
     if is_port_open(scan_target, port):
         result = check_port(port, scan_target)
-        print(result)
+        banner = grab_banner(scan_target, port)
+        print(f"{result} | Banner: {banner}")
         if is_dangerous(port):
             scan_report.append(port)
 
