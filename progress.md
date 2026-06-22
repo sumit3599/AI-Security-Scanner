@@ -16,11 +16,13 @@
 GitHub: https://github.com/sumit3599/AI-Security-Scanner
 
 ## Current Scanner Capabilities
-- Takes IP input from user
-- Scans 7 common ports
-- Detects dangerous ports using dictionary
-- Stores results in a list
-- Prints professional scan report
+- Takes IP input via CLI (--target, --ports)
+- Real port scanning using socket
+- Multi-threaded for fast scanning
+- Banner grabbing — identifies service and version
+- Color coded output (Red/Yellow/Green)
+- AI anomaly detection using IsolationForest
+- Permanent scan history logging
 
 ## Next: Day 4 - socket module (real scanning)
 | June 16, 2026 | Day 4 | Socket, real scanning, timeout | ~2 hrs | is_port_open, connect_ex, settimeout |
@@ -33,3 +35,4 @@ GitHub: https://github.com/sumit3599/AI-Security-Scanner
 | June 17, 2026 | Day 11 | Saving banner results to file | ~30 min | with open(), writing scan results with banners to log |
 | June 17, 2026 | Day 12 | Color coded output | ~30 min | colorama, Fore.RED/YELLOW/GREEN, Style.RESET_ALL |
 | June 17, 2026 | Day 13 | AI anomaly detection | ~1 hr | IsolationForest, training data, anomaly vs normal classification |
+| June 22, 2026 | Day 14 | README documentation | ~30 min | README.md, markdown formatting, GitHub presentation |
