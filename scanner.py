@@ -4,6 +4,8 @@
 import socket
 import threading
 import argparse
+from colorama import Fore, Style
+
 
 # Variables
 name = "Sumit"
@@ -78,11 +80,15 @@ def scan_port(port):
     if is_port_open(scan_target, port):
         result = check_port(port, scan_target)
         banner = grab_banner(scan_target, port)
-        print(f"{result} | Banner: {banner}")
+        if is_dangerous(port):
+            print(Fore.RED + f"{result} | Banner: {banner}" + Style.RESET_ALL)
+            scan_report.append(port)
+        elif port == 443:
+            print(Fore.GREEN + f"{result} | Banner: {banner}" + Style.RESET_ALL)
+        else:
+            print(Fore.YELLOW + f"{result} | Banner: {banner}" + Style.RESET_ALL)
         with open("scan_history.txt", "a") as file:
             file.write(f"{result} | Banner: {banner}\n")
-        if is_dangerous(port):
-            scan_report.append(port)
 
 threads = []
 
