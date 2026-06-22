@@ -5,19 +5,9 @@ import socket
 import threading
 import argparse
 from colorama import Fore, Style
+from sklearn.ensemble import IsolationForest
+import numpy as np
 
-
-# Variables
-name = "Sumit"
-age = 28
-goal = "Network Security Engineer"
-target_ip = "192.168.1.1"
-
-# Print
-print("Developer:", name)
-print("Age:", age)
-print("Goal:", goal)
-print("Target IP:", target_ip)
 
 # Input
 parser = argparse.ArgumentParser(description="AI Security Scanner")
@@ -65,6 +55,7 @@ def is_port_open(ip, port):
         return False
 
 scan_report = []
+open_ports = []
 
 def grab_banner(ip, port):
     try:
@@ -89,10 +80,28 @@ def scan_port(port):
             print(Fore.YELLOW + f"{result} | Banner: {banner}" + Style.RESET_ALL)
         with open("scan_history.txt", "a") as file:
             file.write(f"{result} | Banner: {banner}\n")
+        open_ports.append(port)
 
 threads = []
 
-for port in range(1, 101):
+def detect_anomaly(open_ports_count, dangerous_ports_count):
+    # Training data - what normal looks like
+    normal_data = [
+    [1, 0], [2, 0], [1, 0], [2, 1], [1, 0],
+    [2, 0], [1, 0], [3, 0], [2, 0], [1, 1]
+]
+    
+    model = IsolationForest(contamination=0.1)
+    model.fit(normal_data)
+    
+    result = model.predict([[open_ports_count, dangerous_ports_count]])
+    
+    if result[0] == -1:
+        return "ANOMALY DETECTED - Suspicious scan result!"
+    else:
+        return "Normal scan result"
+
+for port in range(start, end + 1):
     t = threading.Thread(target=scan_port, args=(port,))
     threads.append(t)
     t.start()
@@ -107,3 +116,6 @@ print(f"Dangerous ports: {scan_report}")
 file = open("scan_history.txt", "a")
 file.write(f"Scanned {scan_target} - Dangerous ports: {scan_report}\n")
 file.close()
+
+anomaly_result = detect_anomaly(len(open_ports), len(scan_report))
+print(Fore.CYAN + f"\n--- AI ANALYSIS ---\n{anomaly_result}" + Style.RESET_ALL)
