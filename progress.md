@@ -32,3 +32,4 @@ GitHub: https://github.com/sumit3599/AI-Security-Scanner
 | June 17, 2026 | Day 10 | Banner grabbing | ~1 hr | sock.recv(), decode(), try/except, service version detection |
 | June 17, 2026 | Day 11 | Saving banner results to file | ~30 min | with open(), writing scan results with banners to log |
 | June 17, 2026 | Day 12 | Color coded output | ~30 min | colorama, Fore.RED/YELLOW/GREEN, Style.RESET_ALL |
+| June 17, 2026 | Day 13 | AI anomaly detection | ~1 hr | IsolationForest, training data, anomaly vs normal classification |
