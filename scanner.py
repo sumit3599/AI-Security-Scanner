@@ -79,6 +79,8 @@ def scan_port(port):
         result = check_port(port, scan_target)
         banner = grab_banner(scan_target, port)
         print(f"{result} | Banner: {banner}")
+        with open("scan_history.txt", "a") as file:
+            file.write(f"{result} | Banner: {banner}\n")
         if is_dangerous(port):
             scan_report.append(port)
 
