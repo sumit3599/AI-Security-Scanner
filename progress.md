@@ -30,3 +30,4 @@ GitHub: https://github.com/sumit3599/AI-Security-Scanner
 | June 17, 2026 | Day 8 | Multi-threading | ~1 hr | threading.Thread, t.start(), t.join(), parallel vs sequential scanning |
 | June 17, 2026 | Day 9 | CLI with argparse | ~1 hr | argparse, --target, --ports, string splitting, professional tool interface |
 | June 17, 2026 | Day 10 | Banner grabbing | ~1 hr | sock.recv(), decode(), try/except, service version detection |
+| June 17, 2026 | Day 11 | Saving banner results to file | ~30 min | with open(), writing scan results with banners to log |
