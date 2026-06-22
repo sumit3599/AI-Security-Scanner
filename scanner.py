@@ -1,5 +1,5 @@
-# Sumit Kumar - Security Scanner
-# Day 1 - My First Python Code
+# Sumit Kumar - AI-Powered Security Scanner
+# GitHub: github.com/sumit3599/AI-Security-Scanner
 
 import socket
 import threading
@@ -9,7 +9,6 @@ from sklearn.ensemble import IsolationForest
 import numpy as np
 
 
-# Input
 parser = argparse.ArgumentParser(description="AI Security Scanner")
 parser.add_argument("--target", help="IP address to scan")
 parser.add_argument("--ports", help="Port range e.g. 1-100")
@@ -21,13 +20,11 @@ start = int(parts[0])
 end = int(parts[1])
 print("Scanning target:", scan_target)
 print("Scanner initialized successfully!")
-
-# Conditions
-
-# Loop - scan multiple ports
 print("\n--- Scanning Common Ports ---")
 
+
 dangerous_ports = range(start, end + 1)
+
 
 def check_port(port, scan_target):
     port_info = {
@@ -38,6 +35,7 @@ def check_port(port, scan_target):
         3389: f"Scanning {scan_target} - Port {port}: WARNING - RDP!",
     }
     return port_info.get(port, f"Scanning {scan_target} - Port {port}: Noted")
+
 
 def is_dangerous(port):
     if port in [21, 23, 3389]:
@@ -101,6 +99,7 @@ def detect_anomaly(open_ports_count, dangerous_ports_count):
     else:
         return "Normal scan result"
 
+
 for port in range(start, end + 1):
     t = threading.Thread(target=scan_port, args=(port,))
     threads.append(t)
@@ -109,7 +108,8 @@ for port in range(start, end + 1):
 for t in threads:
     t.join()
 
-print(f"Total ports scanned: 100")
+
+print(f"Total ports scanned: {len(list(range(start, end + 1)))}")
 print(f"Dangerous ports found: {len(scan_report)}")
 print(f"Dangerous ports: {scan_report}")
 
